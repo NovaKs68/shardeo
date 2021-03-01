@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS shardeo;
+CREATE DATABASE IF NOT EXISTS shardeo;
+USE shardeo;
+
+CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON shardeo . * TO 'root'@'%';
