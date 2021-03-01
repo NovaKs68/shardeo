@@ -1,5 +1,7 @@
 const express = require('express');
 
+const userRoutes = require('./routes/user');
+
 const app = express();
 
 // Va rendre les informations exploitables
@@ -12,5 +14,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// Routes de l'application
+app.use('/user', userRoutes);
 
 module.exports = app;
