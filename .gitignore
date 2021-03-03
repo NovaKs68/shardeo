@@ -8,3 +8,13 @@ client/node_modules/*
 
 BDD/data/
 BDD/data/*
+
+server/files/
+!server/files/image1.jpg
+!server/files/image2.jpg
+!server/files/image3.jpg
+!server/files/image4.jpg
+!server/files/image5.jpg
+!server/files/image6.jpg
+!server/files/image7.jpg
+!server/files/image8.jpg

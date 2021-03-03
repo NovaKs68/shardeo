@@ -1,0 +1,6 @@
+<div id="box" (click)="setFocusSearch()">
+  <img [@isFocus]="isFocus" id="iconSearch" src="assets/icons/search.png" alt="icône de recherche">
+  <label [@move]="isFocus" class="input">
+    <input class="input" id="input" type="text" placeholder="Rechercher..." (focus)="focus()" (focusout)="focusOut()">
+  </label>
+</div>

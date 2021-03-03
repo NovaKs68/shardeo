@@ -1,6 +1,8 @@
 const express = require('express');
+const path = require('path');
 
 const userRoutes = require('./routes/user');
+const mediaRoutes = require('./routes/media')
 
 const app = express();
 
@@ -14,7 +16,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// Permet de donner l'accès aux images
+app.use('/files', express.static(path.join(__dirname, 'files')));
+
 // Routes de l'application
 app.use('/user', userRoutes);
+app.use('/media', mediaRoutes);
 
 module.exports = app;

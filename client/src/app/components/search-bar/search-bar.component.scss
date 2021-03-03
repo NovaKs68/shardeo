@@ -1,0 +1,31 @@
+#box {
+  border: #04395E 2px solid;
+  height: 60px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+}
+
+#iconSearch {
+  padding: 10px;
+  height: 40px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.input {
+  flex: 0 0 400px;
+  display: flex;
+  height: 56px;
+  font-size: 1.1em;
+  width: 300px;
+  position: relative;
+
+
+  /* Disable style input */
+  border: none;
+  outline: none;
+  background: none;
+
+}
