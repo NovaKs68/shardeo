@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaService } from "../../services/media.service";
-import { Media } from "../../models/media";
+import { MediaService } from "../../../services/media.service";
+import { Media } from "../../../models/media";
 
 @Component({
   selector: 'app-popular',

@@ -1,15 +1,15 @@
 #box {
   border: #04395E 2px solid;
-  height: 60px;
+  height: 50px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 350px;
 }
 
 #iconSearch {
   padding: 10px;
-  height: 40px;
+  height: 30px;
   margin-left: 10px;
   position: relative;
 }
@@ -17,11 +17,10 @@
 .input {
   flex: 0 0 400px;
   display: flex;
-  height: 56px;
+  height: 46px;
   font-size: 1.1em;
   width: 300px;
   position: relative;
-
 
   /* Disable style input */
   border: none;

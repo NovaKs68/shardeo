@@ -3,6 +3,7 @@ const path = require('path');
 
 const userRoutes = require('./routes/user');
 const mediaRoutes = require('./routes/media')
+const albumRoutes = require('./routes/album');
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.use('/files', express.static(path.join(__dirname, 'files')));
 // Routes de l'application
 app.use('/user', userRoutes);
 app.use('/media', mediaRoutes);
+app.use('/album', albumRoutes)
 
 module.exports = app;

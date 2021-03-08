@@ -84,6 +84,7 @@ CREATE TABLE album (
     title_black BIT(1) NOT NULL,
     upload_date DATE NOT NULL,
     description_album VARCHAR(255) NOT NULL,
+    miniature VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_album)
 )
 Engine = INNODB;

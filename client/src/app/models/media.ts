@@ -7,4 +7,5 @@ export class Media {
   number_view!: string;
   number_like!: string;
   id_theme!: number;
+  theme?: string[];
 }

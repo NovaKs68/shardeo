@@ -47,9 +47,13 @@ INSERT INTO `comment` (`id_comment`, `content`, `id_media`) VALUES
 (2, 'Trop bien j\'adore !!!', 1),
 (3, 'On se connait non ?', 2);
 
-INSERT INTO `album` (`id_album`, `title`, `title_black`, `upload_date`, `description_album`) VALUES
-(1, 'Inspiration de nature', 1, '2021-01-01', 'Une playlist regroupant plein de photos sur la nature.'),
-(2, 'La beauté du soleil', 0, '2020-07-09', 'Vous pourrez trouver tous les plus beaux contenus sur le soleil ici.');
+INSERT INTO `album` (`id_album`, `title`, `title_black`, `upload_date`, `description_album`, `miniature`) VALUES
+(1, 'Inspiration de nature', 1, '2021-01-01', 'Une playlist regroupant plein de photos sur la nature.', 'http://localhost:4200/api/files/amenagement.jpeg'),
+(2, 'La beauté du soleil', 0, '2020-07-09', 'Vous pourrez trouver tous les plus beaux contenus sur le soleil ici.', 'http://localhost:4200/api/files/dessin.jpg'),
+(3, 'Aménagement d\'intérieur', 1, '2021-01-01', 'Une playlist regroupant plein de photos sur la nature.', 'http://localhost:4200/api/files/effets-speciaux.jpg'),
+(4, 'Le dessin c\'est la vie', 0, '2020-07-09', 'Vous pourrez trouver tous les plus beaux contenus sur le soleil ici.', 'http://localhost:4200/api/files/jardin.jpg'),
+(5, 'La photographie d\'évènement', 1, '2021-01-01', 'Une playlist regroupant plein de photos sur la nature.', 'http://localhost:4200/api/files/maison.jpg'),
+(6, 'Le montage digne d\'un MARVEL', 0, '2020-07-09', 'Vous pourrez trouver tous les plus beaux contenus sur le soleil ici.', 'http://localhost:4200/api/files/nature.jpg');
 
 INSERT INTO `album_media_junction` (`id_album`, `id_media`) VALUES
 (1, 2),

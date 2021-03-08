@@ -8,13 +8,13 @@ import {trigger, state, style, animate, transition, query, stagger} from '@angul
   animations: [
     trigger('isFocus', [
       state('state1', style({right: '0px',})),
-      state('state2', style({right: '70px',})),
+      state('state2', style({right: '65px',})),
       transition('state1=>state2', animate('250ms')),
       transition('state2=>state1', animate('250ms 250ms')),
     ]),
     trigger('move', [
       state('state1', style({right: '0px',})),
-      state('state2', style({right: '65px', width: '400px'})),
+      state('state2', style({right: '60px', width: '400px'})),
       transition('state1=>state2', animate('250ms 250ms')),
       transition('state2=>state1', animate('250ms')),
     ])

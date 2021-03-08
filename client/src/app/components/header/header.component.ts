@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() sectionChangedTransport = new EventEmitter<string>();
+  selected = 'Populaire';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeSection(sectionName: string): void {
+    this.sectionChangedTransport.emit(sectionName);
+    this.selected = sectionName;
   }
 
 }

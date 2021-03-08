@@ -1,29 +1,29 @@
 <div class="header">
   <img id="logo" src="/assets/images/logoName.png"  alt="Logo avec le nom shardeo"/>
   <div id="navigations">
-    <div class="navigation">
+    <div (click)="changeSection('Populaire')" class="navigation">
       <p class="textNav">Populaire</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'Populaire'" class="blockGreen"></div>
     </div>
-    <div class="navigation">
+    <div (click)="changeSection('Actualite')" class="navigation">
       <p class="textNav">Fil d'actualités</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'Actualite'" class="blockGreen"></div>
     </div>
-    <div class="navigation">
+    <div (click)="changeSection('Inspiration')" class="navigation">
       <p class="textNav">Inspiration</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'Inspiration'" class="blockGreen"></div>
     </div>
-    <div class="navigation">
+    <div (click)="changeSection('Createurs')" class="navigation">
       <p class="textNav">Créateurs</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'Createurs'" class="blockGreen"></div>
     </div>
-    <div class="navigation">
+    <div (click)="changeSection('CreerMonPortfolio')" class="navigation">
       <p class="textNav">Créer mon portfolio</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'CreerMonPortfolio'" class="blockGreen"></div>
     </div>
-    <div class="navigation">
+    <div (click)="changeSection('MonProfil')" class="navigation">
       <p class="textNav">Mon profil</p>
-      <div class="blockGreen"></div>
+      <div *ngIf="selected === 'MonProfil'" class="blockGreen"></div>
     </div>
   </div>
 
