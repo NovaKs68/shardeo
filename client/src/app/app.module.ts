@@ -16,6 +16,7 @@ import { NewsFeedComponent } from './pages/main-navigation/news-feed/news-feed.c
 import { InspirationComponent } from './pages/main-navigation/inspiration/inspiration.component';
 import { CreatorsComponent } from './pages/main-navigation/creators/creators.component';
 import { GridInspirationComponent } from './components/grid-inspiration/grid-inspiration.component';
+import { GridCreatorsComponent } from './components/grid-creators/grid-creators.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { GridInspirationComponent } from './components/grid-inspiration/grid-ins
     NewsFeedComponent,
     InspirationComponent,
     CreatorsComponent,
-    GridInspirationComponent
+    GridInspirationComponent,
+    GridCreatorsComponent
   ],
     imports: [
         BrowserModule,

@@ -42,3 +42,19 @@ exports.createOneUser = (req, res, next) => {
         }
     });
 };
+
+exports.getUsersPreview = (req, res, next) => {
+    // check token
+    db.query('SELECT users.id_user, users.first_name, users.last_name, users.banner ' +
+    'FROM users ' +
+    'LEFT JOIN roles ON users.id_role = roles.id_role;', function(err, rows,) {
+        if (err) {
+            res.status(404).json({sucess: false, err});
+            console.log(err)
+        } else if (rows[0] === undefined) {
+            res.status(404).json({sucess: false, response: 'Content is empty'});
+        } else {
+            res.status(200).json({sucess: true, response: rows});
+        }
+    });
+}

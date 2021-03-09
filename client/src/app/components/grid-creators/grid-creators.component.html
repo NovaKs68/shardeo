@@ -1,0 +1,10 @@
+<div class="gallery-grid">
+  <div id="userPreview" style="" *ngFor="let userPreview of usersPreview; let index = index;">
+    <img id="userPreviewBanner" [src]="userPreview.banner" (error)="deleteAlbumWithNoMiniature(index)" >
+    <div id="shadowGrey"></div>
+    <div id="userPreviewFirstLastName">
+      <p id="userPreviewFirstName">{{ userPreview.first_name }}</p>
+      <p id="userPreviewLastName">{{ userPreview.last_name }}</p>
+    </div>
+  </div>
+</div>
