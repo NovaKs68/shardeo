@@ -41,4 +41,10 @@ export class MediaService {
       );
     });
   }
+
+  getMediasByCreator(idUser: number): Observable<any> {
+    return this.httpClient!
+      .get<Media[]>(`${this.domain}/media/User/${idUser}`, this.httpOptions)
+      .pipe();
+  }
 }

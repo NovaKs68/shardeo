@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-navigation',
@@ -7,15 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainNavigationComponent implements OnInit {
 
-  selected = 'Populaire';
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router: Router) {
+    this.router.navigate(['popular']);
   }
 
-  changeSection(sectionName: string) {
-    this.selected = sectionName;
+  ngOnInit(): void {
   }
 
 }

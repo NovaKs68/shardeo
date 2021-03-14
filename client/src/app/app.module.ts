@@ -17,6 +17,14 @@ import { InspirationComponent } from './pages/main-navigation/inspiration/inspir
 import { CreatorsComponent } from './pages/main-navigation/creators/creators.component';
 import { GridInspirationComponent } from './components/grid-inspiration/grid-inspiration.component';
 import { GridCreatorsComponent } from './components/grid-creators/grid-creators.component';
+import { MyPortfolioComponent } from './pages/main-navigation/my-portfolio/my-portfolio.component';
+import { CreatorBannerComponent } from './components/creator-banner/creator-banner.component';
+import { ConnectionComponent } from './pages/main-navigation/connection/connection.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoaderSpinComponent } from './components/loader-spin/loader-spin.component';
+import { MyProfileComponent } from './pages/main-navigation/my-profile/my-profile.component';
+import { FormProfileComponent } from './components/form-profile/form-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +39,15 @@ import { GridCreatorsComponent } from './components/grid-creators/grid-creators.
     InspirationComponent,
     CreatorsComponent,
     GridInspirationComponent,
-    GridCreatorsComponent
+    GridCreatorsComponent,
+    MyPortfolioComponent,
+    CreatorBannerComponent,
+    ConnectionComponent,
+    SigninComponent,
+    SignupComponent,
+    LoaderSpinComponent,
+    MyProfileComponent,
+    FormProfileComponent
   ],
     imports: [
         BrowserModule,

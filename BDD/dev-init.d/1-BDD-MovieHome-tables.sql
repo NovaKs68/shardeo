@@ -41,7 +41,12 @@ CREATE TABLE media (
     upload_date DATE NOT NULL,
     number_view INT UNSIGNED NOT NULL,
     number_like INT UNSIGNED NOT NULL,
-    PRIMARY KEY (id_media)
+    id_user INT UNSIGNED NOT NULL,
+    PRIMARY KEY (id_media),
+    CONSTRAINT fk_media_id_user
+            FOREIGN KEY (id_user)
+            REFERENCES users(id_user)
+            ON DELETE CASCADE
 )
 Engine = INNODB;
 
@@ -71,7 +76,7 @@ CREATE TABLE comment (
     content VARCHAR(255) NOT NULL,
     id_media INT UNSIGNED NOT NULL,
     PRIMARY KEY (id_comment),
-    CONSTRAINT fk_media_id_media
+    CONSTRAINT fk_comment_id_media
            FOREIGN KEY (id_media)
            REFERENCES media(id_media)
            ON DELETE CASCADE
@@ -85,7 +90,12 @@ CREATE TABLE album (
     upload_date DATE NOT NULL,
     description_album VARCHAR(255) NOT NULL,
     miniature VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id_album)
+    id_user INT UNSIGNED NOT NULL,
+    PRIMARY KEY (id_album),
+    CONSTRAINT fk_album_id_user
+               FOREIGN KEY (id_user)
+               REFERENCES users(id_user)
+               ON DELETE CASCADE
 )
 Engine = INNODB;
 

@@ -1,5 +1,2 @@
-<app-header (sectionChangedTransport)="changeSection($event)" ></app-header>
-<app-popular *ngIf="selected === 'Populaire'"></app-popular>
-<app-news-feed *ngIf="selected === 'Actualite'"></app-news-feed>
-<app-inspiration *ngIf="selected === 'Inspiration'"></app-inspiration>
-<app-creators *ngIf="selected === 'Createurs'"></app-creators>
+<app-header></app-header>
+<router-outlet></router-outlet>

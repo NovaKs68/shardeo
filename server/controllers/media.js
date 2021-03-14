@@ -71,3 +71,23 @@ exports.createOneMedia = (req, res, next) => {
         }
     });
 };
+
+exports.getMediasByCreator = (req, res, next) => {
+    db.query('SELECT m.*, t.* ' +
+        'FROM media AS m ' +
+        '   LEFT OUTER JOIN media_theme_junction AS mt ' +
+        '      ON m.id_media = mt.id_media ' +
+        '   LEFT OUTER JOIN theme AS t ' +
+        '      ON mt.id_theme = t.id_theme ' +
+        '   WHERE m.id_user = ? ' +
+        'GROUP BY m.id_media;', req.params.id, function(err, rows,) {
+        if(err){
+            res.status(404).json({ sucess: false, err });
+            console.log(err)
+        } else if(rows[0] === undefined) {
+            res.status(404).json({ sucess: false, response: 'Content is empty' });
+        } else {
+            res.status(200).json({ sucess: true, response: rows });
+        }
+    });
+}

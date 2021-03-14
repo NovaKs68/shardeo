@@ -1,0 +1,149 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.formDisplayed {
+  display: flex;
+  flex-direction: row;
+}
+
+.greyBox {
+  width: 750px;
+  background-color: #C4C4C4;
+  height: 60px;
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.titleForm {
+  text-align: center;
+  width: 180px;
+  margin-left: 10px;
+  margin-top: 20px;
+
+  font-family: roboto, sans-serif;
+  font-size: 1.1em;
+}
+
+.contentForm {
+  width: 100%;
+}
+
+.showInformation {
+  width: 94%;
+  height: 40px;
+  margin-top: 10px;
+  background-color: white;
+  border: none;
+  font-family: roboto, sans-serif;
+  font-size: 1.1em;
+  color: black;
+  padding-left: 20px;
+}
+
+.buttonModify {
+  height: 60px;
+  width: 120px;
+  margin: 30px;
+  background-color: #04395E;
+  text-align: center;
+  color: white;
+}
+
+.textModify {
+  margin-top: 20px;
+  font-family: roboto, sans-serif;
+  font-size: 1.1em;
+}
+
+.form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 10px black;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  align-items: center;
+}
+
+.inputFormModify {
+  border: 2px #04395E solid;
+  //border-bottom: 2px solid red;
+  height: 35px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
+
+.containerInput {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.contentFormModify {
+  font-family: roboto, sans-serif;
+  font-size: 1.2em;
+  margin: 5px;
+}
+
+.redBox {
+  height: 4px;
+  border-right: red 4px solid;
+  border-left: red 4px solid;
+  background-color: red;
+  width: 100%;
+}
+
+.errorMessage {
+  color: red;
+  font-family: roboto, sans-serif;
+}
+
+button {
+  background-color: #04395E; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  //margin: 10px 0 0 300px;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#buttonFormModify {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#buttonDisconnect {
+  margin: 50px;
+  width: 30%;
+}
+
+.formNav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}

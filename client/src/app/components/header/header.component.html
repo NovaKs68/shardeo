@@ -1,29 +1,33 @@
 <div class="header">
   <img id="logo" src="/assets/images/logoName.png"  alt="Logo avec le nom shardeo"/>
   <div id="navigations">
-    <div (click)="changeSection('Populaire')" class="navigation">
+    <div (click)="changeSection('Populaire')" routerLink="popular" class="navigation">
       <p class="textNav">Populaire</p>
       <div *ngIf="selected === 'Populaire'" class="blockGreen"></div>
     </div>
-    <div (click)="changeSection('Actualite')" class="navigation">
+    <div (click)="changeSection('Actualite')" routerLink="news" class="navigation">
       <p class="textNav">Fil d'actualités</p>
       <div *ngIf="selected === 'Actualite'" class="blockGreen"></div>
     </div>
-    <div (click)="changeSection('Inspiration')" class="navigation">
+    <div (click)="changeSection('Inspiration')" routerLink="inspiration" class="navigation">
       <p class="textNav">Inspiration</p>
       <div *ngIf="selected === 'Inspiration'" class="blockGreen"></div>
     </div>
-    <div (click)="changeSection('Createurs')" class="navigation">
+    <div (click)="changeSection('Createurs')" routerLink="creator" class="navigation">
       <p class="textNav">Créateurs</p>
       <div *ngIf="selected === 'Createurs'" class="blockGreen"></div>
     </div>
-    <div (click)="changeSection('CreerMonPortfolio')" class="navigation">
+    <div (click)="changeSection('CreerMonPortfolio')" *ngIf="isAuth" routerLink="myPortfolio" class="navigation">
       <p class="textNav">Créer mon portfolio</p>
       <div *ngIf="selected === 'CreerMonPortfolio'" class="blockGreen"></div>
     </div>
-    <div (click)="changeSection('MonProfil')" class="navigation">
+    <div (click)="changeSection('MonProfil')" *ngIf="isAuth" routerLink="myProfile" class="navigation">
       <p class="textNav">Mon profil</p>
       <div *ngIf="selected === 'MonProfil'" class="blockGreen"></div>
+    </div>
+    <div (click)="changeSection('SeConnecter')" *ngIf="!isAuth" routerLink="connection" class="navigation">
+      <p class="textNav">Se connecter</p>
+      <div *ngIf="selected === 'SeConnecter'" class="blockGreen"></div>
     </div>
   </div>
 
