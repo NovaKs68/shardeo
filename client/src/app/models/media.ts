@@ -4,8 +4,8 @@ export class Media {
   name_file!: string;
   description_media!: string;
   upload_date!: Date;
-  number_view!: string;
-  number_like!: string;
-  id_theme!: number;
-  theme?: string[];
+  number_view!: number;
+  number_like!: number;
+  id_user!: number;
+  themes?: string[];
 }

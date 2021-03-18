@@ -3,5 +3,4 @@ export class UserPreview {
   first_name!: string;
   last_name!: string;
   banner!: string;
-  title_black!: boolean;
 }

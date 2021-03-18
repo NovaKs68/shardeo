@@ -25,6 +25,9 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoaderSpinComponent } from './components/loader-spin/loader-spin.component';
 import { MyProfileComponent } from './pages/main-navigation/my-profile/my-profile.component';
 import { FormProfileComponent } from './components/form-profile/form-profile.component';
+import { DragDropDirective } from './directives/drag-drop.directive';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { FormProfileComponent } from './components/form-profile/form-profile.com
     SignupComponent,
     LoaderSpinComponent,
     MyProfileComponent,
-    FormProfileComponent
+    FormProfileComponent,
+    DragDropDirective,
+    UploadFileComponent,
+    ProgressComponent,
   ],
     imports: [
         BrowserModule,

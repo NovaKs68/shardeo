@@ -15,6 +15,9 @@ router.put('/changeLastName', isUser || isModerator || isAdmin, userControllers.
 router.put('/changeFirstName', isUser || isModerator || isAdmin, userControllers.putFirstName);
 router.put('/changeEmail', isUser || isModerator || isAdmin, userControllers.putEmail);
 router.put('/changePassword', isUser || isModerator || isAdmin, userControllers.putPassword);
+router.put('/putBanner', multer, userControllers.putBanner);
+router.put('/putDescription', userControllers.putDescription);
+router.put('/putPortfolio', userControllers.putPortfolio);
 router.get('/:id', userControllers.getOneUser);
 
 module.exports = router

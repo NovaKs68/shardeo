@@ -39,6 +39,7 @@ exports = module.exports = {
     isUser: (req, res, next) => {
         console.log('AAAAAAAAAAAAAAAAAAA');
         try {
+            console.log(req);
             const token = req.body.token || req.get('Authorization');
             console.log(token);
 

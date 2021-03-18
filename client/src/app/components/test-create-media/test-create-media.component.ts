@@ -39,7 +39,7 @@ export class TestCreateMediaComponent implements OnInit {
     media.upload_date = this.mediaForm.get('upload_date')!.value;
     media.number_view = this.mediaForm.get('number_view')!.value;
     media.number_like = this.mediaForm.get('number_like')!.value;
-    media.id_theme = this.mediaForm.get('id_theme')!.value;
+    media.id_user = this.mediaForm.get('id_theme')!.value;
     const file = this.mediaForm.get('file')!.value;
 
     console.log('Le contre file ' + this.fileToUpload);

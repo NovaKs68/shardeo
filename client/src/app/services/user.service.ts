@@ -22,6 +22,21 @@ export class UserService {
     this.domain = expressService.getDomain();
   }
 
+  updateUser(): boolean {
+    const userLocalStorage = JSON.parse(localStorage.getItem('user')!);
+    this.getUserById(userLocalStorage.id_user).subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.user$.next(res.response);
+        this.userPreview$.next(res.response);
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return false;
+  }
+
   getUsers(): Observable<any> {
     return this.httpClient!
       .get<User[]>(`${this.domain}/user`, this.httpOptions)
@@ -30,7 +45,7 @@ export class UserService {
 
   getUserById(idUser: number): Observable<any> {
     return this.httpClient!
-      .get<User>(`${this.domain}/user/${idUser}`, this.httpOptions)
+      .get<any>(`${this.domain}/user/${idUser}`, this.httpOptions)
       .pipe();
   }
 
@@ -38,12 +53,78 @@ export class UserService {
     return new Promise((resolve, reject) => {
       const body = new FormData();
       body.append('user', JSON.stringify(user));
-      body.append('image', file)
+      body.append('image', file);
       this.httpClient!.post<User>(`${this.domain}/user/`, body).subscribe(
         (response) => {
           resolve(response);
         },
         (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  putBanner(idUser: number, file: File) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("token");
+      const userLocalStorage = JSON.parse(localStorage.getItem('user')!);
+      const user = { id_user: idUser };
+      const body = new FormData();
+      body.append('user', JSON.stringify(user));
+      body.append('image', file);
+      body.append('token', token!);
+      body.append('id_user', userLocalStorage.id_user);
+
+      this.httpClient!.put<User>(`${this.domain}/user/putBanner`, body).subscribe(
+        (response) => {
+          console.log(response);
+          resolve(response);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  putDescription(idUser: number, description: string) {
+    return new Promise((resolve, reject) => {
+
+      const token = localStorage.getItem("token");
+      const userLocalStorage = JSON.parse(localStorage.getItem('user')!);
+      const user = { id_user: idUser, biography: description };
+      const body = { user: user, token: token, id_user: userLocalStorage.id_user }
+
+      this.httpClient!.put<User>(`${this.domain}/user/putDescription`, body).subscribe(
+        (response) => {
+          console.log(response);
+          resolve(response);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  putPortfolio(idUser: number) {
+    return new Promise((resolve, reject) => {
+
+      const token = localStorage.getItem("token");
+      const userLocalStorage = JSON.parse(localStorage.getItem('user')!);
+      const user = { id_user: idUser, portfolio: true };
+      const body = { user: user, token: token, id_user: userLocalStorage.id_user };
+
+      this.httpClient!.put<User>(`${this.domain}/user/putPortfolio`, body).subscribe(
+        (response) => {
+          console.log(response);
+          resolve(response);
+        },
+        (error) => {
+          console.log(error);
           reject(error);
         }
       );
@@ -99,7 +180,7 @@ export class UserService {
     return new Promise((resolve, reject) => {
       const token = localStorage.getItem("token");
       const userLocalStorage = JSON.parse(localStorage.getItem('user')!);
-      const user = { id_user: idUser, last_name: lastName }
+      const user = { id_user: idUser, last_name: lastName };
       console.log(user);
       this.httpClient!.put<User>(`${this.domain}/user/changeLastName`, {user: user, token: token, id_user: userLocalStorage.id_user}).subscribe(
         (response) => {

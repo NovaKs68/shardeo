@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require("body-parser");
 
 const userRoutes = require('./routes/user');
 const mediaRoutes = require('./routes/media')
@@ -9,7 +10,9 @@ const authRoutes = require('./routes/auth')
 const app = express();
 
 // Va rendre les informations exploitables
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200'); // A changer avec les variables d'environnement

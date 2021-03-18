@@ -1,0 +1,25 @@
+<div class="container" appDragDrop (filesDropped)="onFileDropped($event)">
+  <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
+  <img id="iconUpload" src="assets/icons/upload.png" alt="Icône d'upload">
+  <h3>Glissez déposez un media ici</h3>
+  <h3>ou</h3>
+  <label for="fileDropRef">Chercher un media</label>
+</div>
+<div class="files-list">
+  <div class="single-file" *ngIf="file">
+    <img id="iconMedia" src="assets/icons/media.png" alt="Icône d'un média">
+    <div class="info">
+      <h4 class="name">
+        {{ file?.name }}
+      </h4>
+      <p class="size">
+        {{ formatBytes(file?.size) }}
+      </p>
+      <app-progress [progress]="progress"></app-progress>
+    </div>
+
+    <div class="delete" (click)="deleteFile()">
+      <img id="iconTrashCan" src="assets/icons/trash-can.png" alt="Icône d'une poubelle">
+    </div>
+  </div>
+</div>

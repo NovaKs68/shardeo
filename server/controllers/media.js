@@ -56,11 +56,19 @@ exports.getMediasWithSpecificTheme = (req, res, next) => {
 
 exports.createOneMedia = (req, res, next) => {
     // check token
+    console.log(req.body)
     const media = JSON.parse(req.body.media);
     const name_file = `${req.protocol}://${req.get('host')}/api/files/${req.files[0].filename}`;
 
-    const content = [name_file, media.title, media.description_media, media.upload_date, media.number_view, media.number_like, media.id_theme]
-    db.query('INSERT INTO media (`id_media`, `name_file`, `title`, `description_media`, `upload_date`, `number_view`, `number_like`) VALUES (NULL, ?,?,?,?,?,?); ' +
+    if (!media.number_like)
+        media.number_like = 0;
+
+    if (!media.number_view)
+        media.number_view = 0;
+    console.log(media.title);
+
+    const content = [name_file, media.title, media.description_media, media.number_view, media.number_like, media.id_user, 1]
+    db.query('INSERT INTO media (`id_media`, `name_file`, `title`, `description_media`, `upload_date`, `number_view`, `number_like`, `id_user`) VALUES (NULL, ?,?,?, NOW(),?,?,?); ' +
         'SET @id_media = LAST_INSERT_ID(); ' +
         'INSERT INTO media_theme_junction (`id_media`, `id_theme`) VALUES (@id_media,?);',content, (err, rows) => {
         if(err){

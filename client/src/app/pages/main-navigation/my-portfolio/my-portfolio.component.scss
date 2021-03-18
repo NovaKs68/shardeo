@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 140px;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
   justify-content: space-between;
 }
 
@@ -17,4 +17,83 @@
 
   font-family: roboto, sans-serif;
   font-size: 1.2em;
+}
+
+#menuAddContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button {
+  background-color: #04395E; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.formNav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.form {
+  z-index: 5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 10px black;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  align-items: center;
+}
+
+.inputFormModify {
+  border: 2px #04395E solid;
+  //border-bottom: 2px solid red;
+  height: 35px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
+
+.containerInput {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.contentFormAdd {
+  font-family: roboto, sans-serif;
+  font-size: 1.2em;
+  margin: 15px;
+}
+
+.inputFormChangeProfile {
+  border: 2px #04395E solid;
+  //border-bottom: 2px solid red;
+  height: 35px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
 }

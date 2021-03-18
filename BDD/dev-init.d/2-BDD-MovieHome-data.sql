@@ -5,12 +5,12 @@ INSERT INTO `roles` (`id_role`, `name`, `permission`) VALUES
 (2, 'contributeur', 2),
 (3, 'administrateur', 3);
 
-INSERT INTO `users` (`id_user`, `first_name`, `last_name`, `email`, `password`, `banner`, `title_black`, `id_role`) VALUES
-(1, 'Jack', 'Blues', 'jack.blues@gmail.com', 'test', 'http://localhost:4200/api/files/banniere1.jpg', 0, 1),
-(2, 'utilisateur', 'utilisateur', 'utilisateur@gmail.com', 'utilisateur', 'http://localhost:4200/api/files/banniere2.jpg', 1, 3),
-(3, 'admin', 'administrateur', 'admin@gmail.com', 'admin', 'http://localhost:4200/api/files/banniere3.jpg', 0, 3),
-(4, 'contributeur', 'contributeur', 'contributeur@gmail.com', 'test', 'http://localhost:4200/api/files/banniere4.jpg', 1, 2),
-(5, 'Baptiste', 'Ross', 'baptiste.ross@free.fr', '1234', 'http://localhost:4200/api/files/banniere5.jpg', 1, 1);
+INSERT INTO `users` (`id_user`, `first_name`, `last_name`, `email`, `password`, `banner`, `portfolio`, `biography`, `id_role`) VALUES
+(1, 'Jack', 'Blues', 'jack.blues@gmail.com', 'test', 'http://localhost:4200/api/files/banniere1.jpg', 1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,', 1),
+(2, 'utilisateur', 'utilisateur', 'utilisateur@gmail.com', 'utilisateur', 'http://localhost:4200/api/files/banniere2.jpg', 1, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaq', 3),
+(3, 'admin', 'administrateur', 'admin@gmail.com', 'admin', NULL, 0, NULL, 3),
+(4, 'contributeur', 'contributeur', 'contributeur@gmail.com', 'test', 'http://localhost:4200/api/files/banniere4.jpg', 1, 'One morning, when Gr', 2),
+(5, 'Baptiste', 'Ross', 'baptiste.ross@free.fr', '1234', 'http://localhost:4200/api/files/banniere5.jpg', 1, 'Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibu', 1);
 
 INSERT INTO `media` (`id_media`, `name_file`, `title`, `description_media`, `upload_date`, `number_view`, `number_like`, `id_user`) VALUES
 (1, 'http://localhost:4200/api/files/image1.jpg', 'Media', 'C\'est un super media ca hein', '2019-02-10', 11, 2, 1),

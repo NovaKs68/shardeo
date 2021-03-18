@@ -5,7 +5,8 @@ export class User {
   email!: string;
   password!: string;
   banner!: string;
-  title_black!: boolean;
+  portfolio!: boolean;
+  biography!: string;
   id_role!: number;
   name!: string;
   permission!: number;

@@ -25,6 +25,7 @@ exports.getOneUser = (req, res, next) => {
         } else if(rows[0] === undefined) {
             res.status(404).json({ success: false, response: 'Content is empty' });
         } else {
+            console.log(rows[0]);
             res.status(200).json({ success: true, response: rows[0] });
         }
     });
@@ -173,4 +174,61 @@ exports.putPassword = (req, res, next) => {
             res.status(200).json({ success: true });
         }
     });
-}
+};
+
+exports.putBanner = (req, res, next) => {
+    // check token
+    const user = JSON.parse(req.body.user);
+    const name_file = `${req.protocol}://${req.get('host')}/api/files/${req.files[0].filename}`;
+    const content = [name_file, user.id_user];
+    db.query('UPDATE users as u ' +
+        'SET u.banner = ? ' +
+        'WHERE u.id_user = ?',content, (err, rows) => {
+        if (err) {
+            console.log(err);
+            res.status(404).json({ success: false, err })
+        } else if (!user.id_user) {
+            res.status(404).json({ success: false, response: 'Request content undefined' });
+        } else {
+            res.status(200).json({ success: true });
+        }
+    });
+};
+
+exports.putDescription = (req, res, next) => {
+    // check token
+    console.log(req.body);
+    const user = req.body.user;
+    const content = [user.biography, user.id_user];
+    db.query('UPDATE users as u ' +
+        'SET u.biography = ? ' +
+        'WHERE u.id_user = ?',content, (err, rows) => {
+        if (err) {
+            console.log(err);
+            res.status(404).json({ success: false, err })
+        } else if (!user.id_user) {
+            res.status(404).json({ success: false, response: 'Request content undefined' });
+        } else {
+            res.status(200).json({ success: true });
+        }
+    });
+};
+
+exports.putPortfolio = (req, res, next) => {
+    // check token
+    console.log(req.body);
+    const user = req.body.user;
+    const content = [user.portfolio, user.id_user];
+    db.query('UPDATE users as u ' +
+        'SET u.portfolio = ? ' +
+        'WHERE u.id_user = ?',content, (err, rows) => {
+        if (err) {
+            console.log(err);
+            res.status(404).json({ success: false, err })
+        } else if (!user.id_user) {
+            res.status(404).json({ success: false, response: 'Request content undefined' });
+        } else {
+            res.status(200).json({ success: true });
+        }
+    });
+};
