@@ -1,0 +1,10 @@
+<div class="gallery-grid">
+  <div id="media" style="" *ngFor="let media of medias; let index = index;">
+    <img id="contentMedia" [src]="media.name_file" (error)="deleteMediaWithNoImage(index)" [alt]="media.description_media ">
+    <div id="descriptionMedia">
+      <p class="text" id="title">{{ media.title }}</p>
+      <p class="text" id="description">{{ media.description_media }}</p>
+    </div>
+  </div>
+</div>
+

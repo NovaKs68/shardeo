@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  shardeo-web:
+    container_name: shardeo-web
+    build:
+      context: client
+    ports:
+      - ${PORT_ANGULAR}:80
+    depends_on:
+      - shardeo-server
+    env_file:
+      - ./.env
+
+
+  shardeo-server:
+    container_name: shardeo-server
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT_BACK}:8080
+    depends_on:
+      - mariadb
+    #volumes:
+    #  - ./server/modules/pictures/picturesProjects:/app/server/modules/pictures/picturesProjects:z
+    env_file:
+      - ./.env
+
+  mariadb:
+    container_name: shardeo-bdd
+    build:
+      context: BDD
+      dockerfile: Dockerfile
+    volumes:
+      - ./BDD/data:/var/lib/mysql:z
+    env_file:
+      - ./.env
+    expose:
+      - 3306
+
+  adminer:
+    container_name: shardeo-adminer
+    image: adminer
+    depends_on:
+      - mariadb
+    ports:
+      - ${PORT_ADMINER}:8080

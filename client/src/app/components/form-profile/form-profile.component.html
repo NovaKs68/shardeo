@@ -1,0 +1,238 @@
+<div id="box" class="container">
+
+  <div class="formDisplayed">
+    <div class="greyBox">
+      <p class="titleForm">Nom :</p>
+      <label class="contentForm">
+        <input type="text" class="showInformation" value="{{ user.last_name }}" disabled="disabled" />
+      </label>
+    </div>
+    <div class="buttonModify" (click)="openModalModify('lastName')">
+      <p class="textModify">Modifier</p>
+    </div>
+  </div>
+
+
+  <div class="formDisplayed">
+    <div class="greyBox">
+      <p class="titleForm">Prénom :</p>
+      <label class="contentForm">
+        <input type="text" class="showInformation" value="{{ user.first_name }}" disabled="disabled" />
+      </label>
+    </div>
+    <div class="buttonModify" (click)="openModalModify('firstName')">
+      <p class="textModify">Modifier</p>
+    </div>
+  </div>
+
+  <div class="formDisplayed">
+    <div class="greyBox">
+      <p class="titleForm">Adresse email :</p>
+      <label class="contentForm">
+        <input type="email" class="showInformation" value="{{ user.email }}" disabled="disabled" />
+      </label>
+    </div>
+    <div class="buttonModify" (click)="openModalModify('email')">
+      <p class="textModify">Modifier</p>
+    </div>
+  </div>
+
+  <div class="formDisplayed">
+    <div class="greyBox">
+      <p class="titleForm">Mot de passe :</p>
+      <label class="contentForm">
+        <input type="password" class="showInformation" value="{{ user.password }}" disabled="disabled" />
+      </label>
+    </div>
+    <div class="buttonModify" (click)="openModalModify('password')">
+      <p class="textModify">Modifier</p>
+    </div>
+  </div>
+
+  <button type="button" id="buttonDisconnect" (click)="disconnectUser()">Se déconnecter</button>
+
+  <form [formGroup]="formConfirmPassword" id="formConfirmPassword" class="form" *ngIf="formModifyVerifyPasswordIsOpen" (ngSubmit)="onSubmitFormConfirmPassword()">
+    <!-- verifyPassword -->
+    <div class="containerInput">
+      <label for="verifyPassword" class="contentFormModify">Entrez votre mot de passe :</label>
+      <div>
+        <input type="password" name="verifyPassword" class="inputFormModify" id="verifyPassword" formControlName="verifyPassword">
+        <div *ngIf="formConfirmPassword.controls['verifyPassword'].hasError('noPassswordMatch')" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="formConfirmPassword.controls['verifyPassword'].hasError('noPassswordMatch')">
+          Mauvais mot de passe
+        </label>
+      </div>
+    </div>
+    <div class="formNav">
+      <button type="button" (click)="closeModalModify()">Annuler</button>
+      <button type="submit" [disabled]="!formConfirmPassword.valid">Valider</button>
+    </div>
+  </form>
+
+  <form [formGroup]="formModifyLastName" id="formModifyLastName" class="form" *ngIf="formModifyLastNameIsOpen" (ngSubmit)="onSubmitFormModifyLastName()">
+    <!-- last_name -->
+    <div class="containerInput">
+      <label for="last_name" class="contentFormModify">Nom :</label>
+      <div>
+        <input type="text" name="last_name" class="inputFormModify" id="last_name" formControlName="last_name">
+        <div *ngIf="formModifyLastName.controls['last_name'].hasError('lastNameExisting') || formModifyLastName.controls['last_name'].hasError('hasNotOnlyText')" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyLastName.controls['last_name'].hasError('lastNameExisting')">
+          Déjà existant
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyLastName.controls['last_name'].hasError('hasNotOnlyText')">
+          Doit contenir exclusivement du texte
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyLastName.controls['last_name'].hasError('errorServer')">
+          Oups une erreur serveur est survenue, réessayez plus tard !
+        </label>
+      </div>
+    </div>
+    <div class="formNav">
+      <button type="button" (click)="closeModalModify()">Annuler</button>
+      <button type="submit" [disabled]="!formModifyLastName.valid">Valider</button>
+    </div>
+  </form>
+
+  <form [formGroup]="formModifyFirstName" id="formModifyFirstName" class="form" *ngIf="formModifyFirstNameIsOpen" (ngSubmit)="onSubmitFormModifyFirstName()">
+    <!-- first_name -->
+    <div class="containerInput">
+      <label for="first_name" class="contentFormModify">Prénom :</label>
+      <div>
+        <input type="text" name="first_name" class="inputFormModify" id="first_name" formControlName="first_name">
+        <div *ngIf="formModifyFirstName.controls['first_name'].hasError('firstNameExisting') || formModifyFirstName.controls['first_name'].hasError('hasNotOnlyText')" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyFirstName.controls['first_name'].hasError('lastNameExisting')">
+          Déjà existant
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyFirstName.controls['first_name'].hasError('hasNotOnlyText')">
+          Doit contenir exclusivement du texte
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyFirstName.controls['first_name'].hasError('errorServer')">
+          Oups une erreur serveur est survenue, réessayez plus tard !
+        </label>
+      </div>
+    </div>
+    <div class="formNav">
+      <button type="button" (click)="closeModalModify()">Annuler</button>
+      <button type="submit" [disabled]="!formModifyFirstName.valid">Valider</button>
+    </div>
+  </form>
+
+  <form [formGroup]="formModifyEmail" id="formModifyEmail" class="form" *ngIf="formModifyEmailIsOpen" (ngSubmit)="onSubmitFormModifyEmail()">
+    <!-- email -->
+    <div class="containerInput">
+      <label for="email" class="contentFormModify">Adresse email :</label>
+      <div>
+        <input type="email" name="email" class="inputFormModify" id="email" formControlName="email">
+        <div *ngIf="formModifyEmail.controls['email'].hasError('email') || formModifyEmail.controls['email'].hasError('emailExisting')" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyEmail.controls['email'].hasError('emailExisting')">
+          Déjà existant
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyEmail.controls['email'].hasError('email')">
+          Doit-être une email correcte
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyEmail.controls['email'].hasError('errorServer')">
+          Oups une erreur serveur est survenue, réessayez plus tard !
+        </label>
+      </div>
+    </div>
+    <div class="formNav">
+      <button type="button" (click)="closeModalModify()">Annuler</button>
+      <button type="submit" [disabled]="!formModifyEmail.valid">Valider</button>
+    </div>
+  </form>
+
+  <form [formGroup]="formModifyPassword" id="formModifyPassword" class="form" *ngIf="formModifyPasswordIsOpen" (ngSubmit)="onSubmitFormModifyPassword()">
+    <!-- password -->
+    <div class="containerInput">
+      <label for="password" class="contentFormModify">Nouveau mot de passe :</label>
+      <div>
+        <input type="password" name="password" class="inputFormModify" id="password" formControlName="password">
+        <div *ngIf="passwordFalse" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="formModifyPassword.controls['password'].hasError('passwordExisting')">
+          Déjà existant
+        </label>
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['password'].hasError('required') ||
+            formModifyPassword.controls['password'].hasError('minlength'))">
+          Doit contenir au moins 8 caractères
+        </label>
+
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['password'].hasError('required') ||
+            formModifyPassword.controls['password'].hasError('hasNumber'))">
+          Doit contenir au moins 1 chiffre
+        </label>
+
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['password'].hasError('required') ||
+            formModifyPassword.controls['password'].hasError('hasCapitalCase'))">
+          Doit contenir au moins 1 majuscule
+        </label>
+
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['password'].hasError('required') ||
+            formModifyPassword.controls['password'].hasError('hasSmallCase'))">
+          Doit contenir au moins 1 minuscule
+        </label>
+
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['password'].hasError('required') ||
+            formModifyPassword.controls['password'].hasError('hasSpecialCharacters'))">
+          Doit contenir au moins 1 caractère spécial
+        </label>
+
+        <label
+          class="errorMessage"
+          *ngIf="formModifyPassword.controls['password'].hasError('errorServer')">
+          Oups une erreur serveur est survenue, réessayez plus tard !
+        </label>
+      </div>
+    </div>
+
+    <!-- confirmPassword -->
+    <div class="containerInput">
+      <label for="confirmPassword" class="contentFormModify">Confirmation de mot de passe :</label>
+      <div>
+        <input type="password" name="confirmPassword" class="inputFormModify" id="confirmPassword" formControlName="confirmPassword">
+        <div *ngIf="formModifyPassword.controls['confirmPassword'].hasError('required') || formModifyPassword.controls['confirmPassword'].hasError('NoPassswordMatch')" class="redBox"></div>
+        <label
+          class="errorMessage"
+          *ngIf="!!(formModifyPassword.controls['confirmPassword'].hasError('required') || formModifyPassword.controls['confirmPassword'].hasError('NoPassswordMatch'))">
+          Le mot de passe de confirmation doit être identique
+        </label>
+      </div>
+    </div>
+    <div class="formNav">
+      <button type="button" (click)="closeModalModify()">Annuler</button>
+      <button type="submit" [disabled]="!formModifyPassword.valid">Valider</button>
+    </div>
+  </form>
+
+</div>

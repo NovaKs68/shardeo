@@ -1,0 +1,125 @@
+<div id="subHeader">
+    <!--<h1 class="firstLastName">{{ user.first_name }}</h1>
+    <h1 class="firstLastName">{{ user.last_name }}</h1>-->
+  <app-creator-banner id="previewUser" [getUsersPreview]="userPreview"></app-creator-banner>
+  <p id="description">{{ user.biography }}</p>
+</div>
+<div id="menuAddContent">
+  <button class="buttonStyle" [disabled]="medias[0] && !user.portfolio" (click)="openModalAdd('media')">Ajouter un media</button>
+  <button class="buttonStyle" (click)="openModalAdd('banner')">{{ user.banner ? 'Changer la bannière' : 'Ajouter une bannière' }}</button>
+  <button class="buttonStyle" (click)="openModalAdd('description')">{{ user.biography ? 'Modifier la description' : 'Ajouter une description' }}</button>
+  <button class="buttonStyle" (click)="openModalAdd('publish')" *ngIf="!user.portfolio" [disabled]="!medias || !user.banner || !user.biography">Publier mon portfolio</button>
+</div>
+
+<app-grid-media [getMedias]="medias"></app-grid-media>
+
+<div *ngIf="modalPublishIsOpen" class="form">
+  <h3>Etes vous sûr de créer votre portfolio ?</h3>
+  <div class="formNav">
+    <button type="button" (click)="closeModalModify()">Annuler</button>
+    <button (click)="createPortfolio()">Valider</button>
+  </div>
+</div>
+
+<form [formGroup]="formAddMedia" id="formaddMedia" class="form" *ngIf="formAddMediaIsOpen" (ngSubmit)="onSubmitFormAddMedia()">
+  <!-- addMedia -->
+  <div class="containerInput">
+
+    <div class="form-group">
+      <app-upload-file (uploadNewFile)="newMedia($event)"></app-upload-file>
+      <div class="invalid-feedback" style="display: block">
+      </div>
+    </div>
+
+    <label for="titleMedia" class="contentFormAdd">Entrez le titre de votre média :</label>
+    <div>
+      <input type="text" name="titleMedia" class="inputFormChangeProfile" id="titleMedia" formControlName="titleMedia">
+      <div *ngIf="formAddMedia.controls['titleMedia'].hasError('extensionFileMismatch')" class="redBox"></div>
+      <label
+        class="errorMessage"
+        *ngIf="formAddMedia.controls['titleMedia'].hasError('extensionFileMismatch')">
+        Le media doit avoir l'extension ".png", ".jpeg", ".jpg" ou ".mp4"
+      </label>
+      <label
+        class="errorMessage"
+        *ngIf="formAddMedia.controls['titleMedia'].hasError('errorServer')">
+        Une erreur serveur est survenue !
+      </label>
+    </div>
+
+    <label for="descriptionMedia" class="contentFormAdd">Entrez la description de votre média:</label>
+    <div>
+      <input type="text" name="descriptionMedia" class="inputFormChangeProfile" id="descriptionMedia" formControlName="descriptionMedia">
+      <div *ngIf="formAddMedia.controls['descriptionMedia'].hasError('extensionFileMismatch')" class="redBox"></div>
+      <label
+        class="errorMessage"
+        *ngIf="formAddMedia.controls['descriptionMedia'].hasError('extensionFileMismatch')">
+        Le media doit avoir l'extension ".png", ".jpeg", ".jpg" ou ".mp4"
+      </label>
+      <label
+        class="errorMessage"
+        *ngIf="formAddMedia.controls['descriptionMedia'].hasError('errorServer')">
+        Une erreur serveur est survenue !
+      </label>
+    </div>
+  </div>
+
+  <div class="formNav">
+    <button type="button" (click)="closeModalModify()">Annuler</button>
+    <button type="submit" [disabled]="!formAddMedia.valid">Valider</button>
+  </div>
+</form>
+
+<form [formGroup]="formAddBanner" id="formAddBanner" class="form" *ngIf="formAddBannerIsOpen" (ngSubmit)="onSubmitFormAddBanner()">
+  <!-- addBanner -->
+  <div class="containerInput">
+
+    <div class="form-group">
+      <app-upload-file (uploadNewFile)="newBanner($event)"></app-upload-file>
+      <div class="invalid-feedback" style="display: block">
+      </div>
+      <!--<div *ngIf="formAddBanner.controls['addBanner'].hasError('extensionFileMismatch')" class="redBox"></div>
+      <label
+        class="errorMessage"
+        *ngIf="formAddBanner.controls['addBanner'].hasError('extensionFileMismatch')">
+        La bannière doit avoir l'extension ".png", ".jpeg" ou ".jpg"
+      </label>
+      <label
+        class="errorMessage"
+        *ngIf="formAddBanner.controls['addBanner'].hasError('errorServer')">
+        Une erreur serveur est survenue !
+      </label>-->
+    </div>
+  </div>
+
+  <div class="formNav">
+    <button type="button" (click)="closeModalModify()">Annuler</button>
+    <button type="submit" [disabled]="!formAddBanner.valid">Valider</button>
+  </div>
+
+</form>
+
+<form [formGroup]="formAddDescription" id="formAddDescription" class="form" *ngIf="formAddDescriptionIsOpen" (ngSubmit)="onSubmitFormAddDescription()">
+  <!-- addMedia -->
+  <div class="containerInput">
+    <label for="addDescription" class="contentFormAdd">Entrez votre description :</label>
+    <div>
+      <input type="text" name="addDescription" class="inputFormChangeProfile" id="addDescription" formControlName="addDescription">
+      <div *ngIf="formAddDescription.controls['addDescription'].hasError('extensionFileMismatch')" class="redBox"></div>
+      <label
+        class="errorMessage"
+        *ngIf="formAddDescription.controls['addDescription'].hasError('extensionFileMismatch')">
+        La bannière doit avoir l'extension ".png", ".jpeg" ou ".jpg"
+      </label>
+      <label
+        class="errorMessage"
+        *ngIf="formAddDescription.controls['addDescription'].hasError('errorServer')">
+        Une erreur serveur est survenue !
+      </label>
+    </div>
+  </div>
+  <div class="formNav">
+    <button type="button" (click)="closeModalModify()">Annuler</button>
+    <button type="submit" [disabled]="!formAddDescription.valid">Valider</button>
+  </div>
+</form>

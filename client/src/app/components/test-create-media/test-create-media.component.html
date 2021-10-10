@@ -1,0 +1,40 @@
+<div id="box" class="container">
+  <form [formGroup]="mediaForm" class="row" (ngSubmit)="onSubmit()">
+    <!-- title -->
+    <label for="title">Titre :
+      <input type="text" name="title" id="title" formControlName="title">
+    </label>
+    <!-- description_media -->
+    <label for="description_media">description_media :
+      <input type="text" name="description_media" id="description_media" formControlName="description_media">
+    </label>
+    <!-- upload_date -->
+    <label for="upload_date">upload_date :
+      <input type="date" name="upload_date" id="upload_date" formControlName="upload_date">
+    </label>
+    <!-- number_view -->
+    <label for="number_view">number_view :
+      <input type="number" name="number_view" id="number_view" formControlName="number_view">
+    </label>
+    <!-- number_like -->
+    <label for="number_like">number_like :
+      <input type="number" name="number_like" id="number_like" formControlName="number_like">
+    </label>
+    <!-- id_theme -->
+    <label for="id_theme">id_theme :
+      <input type="number" name="id_theme" id="id_theme" formControlName="id_theme">
+    </label>
+    <!-- images -->
+    <div class="form-group">
+      <label for="file">Choose File</label>
+      <input type="file"
+             id="file"
+             formControlName="file"
+             (change)="handleFileInput($event)">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <button (click)="test()">TEST</button>
+  <!--<img src="http://localhost:8080/modules/pictures/apercu.png1612463458610.png">-->
+
+</div>

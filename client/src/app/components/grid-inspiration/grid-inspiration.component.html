@@ -1,0 +1,12 @@
+<div id="container">
+  <div class="gallery-grid">
+    <div id="album" style="" *ngFor="let album of albums; let index = index;">
+      <img id="albumMiniature" [src]="album.miniature" (error)="deleteAlbumWithNoMiniature(index)" [alt]="album.description_album ">
+      <div id="shadowGrey"></div>
+      <div id="albumTitle">
+        <p>{{ album.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
